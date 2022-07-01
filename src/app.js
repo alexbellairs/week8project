@@ -22,21 +22,20 @@ const app = async (yargsObj) => {
       await listMovies();
     } else if (yargsObj.update) {
       //update one entry in movie table
-      {
-        const criteria = { title: yargsObj.update };
-        let update = {};
-        if (yargsObj.title) {
-          update = { ...update, title: yargsObj.title };
-        }
-        if (yargsObj.actor) {
-          update = { ...update, actor: yargsObj.actor };
-        }
-        if (yargsObj.rating) {
-          update = { ...update, rating: yargsObj.rating };
-        }
 
-        await updateMovie(criteria, update);
+      const criteria = { title: yargsObj.update };
+      let update = {};
+      if (yargsObj.title) {
+        update = { ...update, title: yargsObj.title };
       }
+      if (yargsObj.actor) {
+        update = { ...update, actor: yargsObj.actor };
+      }
+      if (yargsObj.rating) {
+        update = { ...update, rating: yargsObj.rating };
+      }
+
+      await updateMovie(criteria, update);
     } else if (yargsObj.delete) {
       {
         await deleteMovie({ title: yargsObj.title });
